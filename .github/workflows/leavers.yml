@@ -1,0 +1,47 @@
+name: HF Leavers Monitor
+on:
+  schedule:
+    # 10:47 UTC = 6:47am ET. IAPD regenerates ADV report PDFs around 09:10 UTC the day after
+    # a filing, so this catches yesterday's filings the same morning.
+    - cron: "47 10 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: leavers
+  cancel-in-progress: false
+jobs:
+  run-leavers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests pdfplumber pypdf pandas openpyxl
+      - name: Run leavers monitor
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python leavers.py
+      - name: Commit updated leavers state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add schedule_a_snapshot.json leavers_universe.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No changes, skipping commit."
+            exit 0
+          fi
+          git commit -m "chore: update leavers state [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase origin main
+          git push origin HEAD:main
