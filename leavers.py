@@ -306,8 +306,14 @@ SEC_HEADERS = {"User-Agent": os.environ.get("SEC_USER_AGENT", "FLS sec-monitor r
 # ── Limits ────────────────────────────────────────────────────────────────────
 DETAIL_DELAY = 0.25          # seconds between IAPD detail calls
 PDF_DELAY = 1.0              # seconds between PDF downloads
-BASELINE_PER_RUN = int(os.environ.get("BASELINE_PER_RUN", "400"))
-MAX_RUN_SECONDS = int(os.environ.get("MAX_RUN_SECONDS", str(5 * 60 * 60)))  # Actions caps jobs at 6h
+BASELINE_PER_RUN = int(os.environ.get("BASELINE_PER_RUN", "2000"))   # per chunk; time budget usually binds first
+MAX_RUN_SECONDS = int(os.environ.get("MAX_RUN_SECONDS", str(25 * 60)))  # one chunk; workflow loops chunks and commits between them
+RECHECK_AFTER_HOURS = 20       # a firm checked more recently than this is skipped (lets chunks resume)
+SAVE_EVERY = 25                # write the snapshot to disk every N firms
+PARSE_TIMEOUT = 180            # seconds; a PDF that takes longer is skipped
+PARSE_MEMORY_BYTES = 2 * 1024 ** 3   # 2 GB cap per parse so one huge PDF can't take down the runner
+MAX_SCAN_PAGES = 200           # pages to search for the Schedule A header before giving up
+EXIT_MORE_WORK = 10            # exit code telling the workflow another chunk is needed
 
 # ── Schedule A parsing ────────────────────────────────────────────────────────
 TABLE_HDR = re.compile(r"FULL\s+LEGAL\s+NAME\s*\(\s*INDIVIDUALS", re.IGNORECASE)
@@ -394,46 +400,90 @@ def get_pdf_etag(crd: str) -> str | None:
     return r.headers.get("ETag") if r.status_code == 200 else None
 
 
+def _parse_worker(path: str, conn) -> None:
+    """Runs in a child process with a memory cap, so a huge PDF fails alone instead of
+    exhausting the runner's memory (which is what killed the first three runs)."""
+    try:
+        import resource
+        resource.setrlimit(resource.RLIMIT_AS, (PARSE_MEMORY_BYTES, PARSE_MEMORY_BYTES))
+    except Exception:
+        pass
+    try:
+        start_page = None
+        reader = PdfReader(path)
+        for i, p in enumerate(reader.pages):
+            if i >= MAX_SCAN_PAGES:
+                break
+            if TABLE_HDR.search(p.extract_text() or ""):
+                start_page = i
+                break
+        del reader
+        if start_page is None:
+            conn.send(("ok", []))
+            return
+        collected = []
+        with pdfplumber.open(path) as pdf:
+            for page in pdf.pages[start_page:start_page + 15]:
+                collected.append(page.extract_text() or "")
+                page.close()
+                joined = "\n".join(collected)
+                hdr = TABLE_HDR.search(joined)
+                if hdr and TABLE_END.search(joined[hdr.start():]):
+                    break
+        conn.send(("ok", parse_schedule_a("\n".join(collected))))
+    except MemoryError:
+        conn.send(("error", "memory cap hit"))
+    except Exception as exc:
+        conn.send(("error", repr(exc)[:200]))
+    finally:
+        conn.close()
+
+
+def parse_pdf_isolated(content: bytes) -> tuple[list[dict] | None, str]:
+    import multiprocessing as mp
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+        tmp.write(content)
+        path = tmp.name
+    ctx = mp.get_context("fork")
+    parent, child = ctx.Pipe(duplex=False)
+    proc = ctx.Process(target=_parse_worker, args=(path, child), daemon=True)
+    try:
+        proc.start()
+        child.close()
+        if parent.poll(PARSE_TIMEOUT):
+            status, payload = parent.recv()
+        else:
+            status, payload = "error", f"timed out after {PARSE_TIMEOUT}s"
+    except EOFError:
+        status, payload = "error", "parser process died"
+    finally:
+        if proc.is_alive():
+            proc.kill()
+        proc.join(5)
+        parent.close()
+        try:
+            os.remove(path)
+        except OSError:
+            pass
+    return (payload, "ok") if status == "ok" else (None, payload)
+
+
 def fetch_schedule_a(crd: str) -> tuple[list[dict] | None, str | None]:
-    """Download the ADV report and parse Schedule A. Stops reading pages once the table ends."""
+    """Download the ADV report and parse Schedule A in an isolated, memory-capped process."""
     r = requests.get(ADV_PDF_URL.format(crd=crd), headers=IAPD_HEADERS, timeout=120)
     if r.status_code == 429:
         raise RateLimited()
     if r.status_code != 200:
         log.warning("CRD %s: PDF status %s", crd, r.status_code)
         return None, None
-    # Speed: find the Schedule A page with pypdf's fast text pass, then run the slower but
-    # cleaner pdfplumber extraction only from that page onward. Falls back to a full scan.
-    start_page = 0
-    try:
-        reader = PdfReader(io.BytesIO(r.content))
-        for i, p in enumerate(reader.pages):
-            if TABLE_HDR.search(p.extract_text() or ""):
-                start_page = i
-                break
-    except Exception:
-        start_page = 0
-
-    rows = _plumber_rows(r.content, start_page)
-    if not rows and start_page:
-        rows = _plumber_rows(r.content, 0)   # pypdf pointed at the wrong page; full scan
-    return rows, r.headers.get("ETag")
-
-
-def _plumber_rows(content: bytes, start_page: int) -> list[dict]:
-    collected, started = [], False
-    with pdfplumber.open(io.BytesIO(content)) as pdf:
-        for page in pdf.pages[start_page:]:
-            t = page.extract_text() or ""
-            if not started and TABLE_HDR.search(t):
-                started = True
-            if started:
-                collected.append(t)
-                joined = "\n".join(collected)
-                hdr = TABLE_HDR.search(joined)
-                if hdr and TABLE_END.search(joined[hdr.start():]):
-                    break
-    return parse_schedule_a("\n".join(collected))
+    etag = r.headers.get("ETag")
+    mb = len(r.content) / 1e6
+    rows, note = parse_pdf_isolated(r.content)
+    del r
+    if rows is None:
+        log.warning("CRD %s: parse failed (%s, %.1f MB)", crd, note, mb)
+    return rows, etag
 
 
 # ── Universe ──────────────────────────────────────────────────────────────────
@@ -530,7 +580,18 @@ def build_email(events: list[dict]) -> tuple[str, str]:
 
 
 # ── Main run ──────────────────────────────────────────────────────────────────
-def run() -> None:
+def _recent(ts: str | None) -> bool:
+    if not ts:
+        return False
+    try:
+        age = datetime.now(timezone.utc) - datetime.fromisoformat(ts)
+    except ValueError:
+        return False
+    return age.total_seconds() < RECHECK_AFTER_HOURS * 3600
+
+
+def run() -> int:
+    """One chunk of work. Returns 0 when today's work is done, EXIT_MORE_WORK if time ran out."""
     t0 = time.time()
     snap = load(SNAPSHOT_FILE, {})
     uni = load(UNIVERSE_FILE, {})
@@ -547,75 +608,108 @@ def run() -> None:
     firms = uni.get("firms", {})
     if not firms:
         log.error("No universe available; stopping.")
-        return
+        return 1
 
-    # Pass 1: daily diff checks on firms already baselined (oldest-checked first, so a
-    # rate-limited run resumes where the last one stopped). Pass 2: baseline new firms
-    # with whatever time is left. Daily checks always come before baselining.
-    known = sorted((c for c in firms if c in snap), key=lambda c: snap[c].get("checked", ""))
-    unknown = [c for c in firms if c not in snap]
-    events, baselined, checked, parse_failures = [], 0, 0, []
+    # Pass 1: daily checks on baselined firms not yet checked today (oldest first).
+    # Pass 2: baseline new firms with the time left. Daily checks always come first.
+    known = sorted((c for c in firms if c in snap and not _recent(snap[c].get("checked"))),
+                   key=lambda c: snap[c].get("checked", ""))
+    unknown = [c for c in firms if c not in snap and not _recent(snap.get("_failed", {}).get(c))]
+    events, baselined, checked, parse_failures, errors = [], 0, 0, [], 0
+    out_of_time = False
+    since_save = 0
+
+    def checkpoint(force=False):
+        nonlocal since_save
+        since_save += 1
+        if force or since_save >= SAVE_EVERY:
+            save(SNAPSHOT_FILE, snap)
+            since_save = 0
 
     try:
         for crd in known:
             if time.time() - t0 > MAX_RUN_SECONDS:
-                log.warning("Time budget reached during checks; remaining firms roll to next run.")
+                out_of_time = True
                 break
             prior = snap[crd]
-            filing = get_adv_filing_date(crd)
-            time.sleep(DETAIL_DELAY)
-            checked += 1
+            try:
+                filing = get_adv_filing_date(crd)
+                time.sleep(DETAIL_DELAY)
+                checked += 1
+                if filing and filing != prior.get("filing_date"):
+                    # New filing. Only read the PDF once IAPD has regenerated it.
+                    etag = get_pdf_etag(crd)
+                    if not etag or etag == prior.get("etag"):
+                        log.info("CRD %s: new filing %s, report not regenerated yet", crd, filing)
+                    else:
+                        rows, etag = fetch_schedule_a(crd)
+                        time.sleep(PDF_DELAY)
+                        if not rows:
+                            parse_failures.append(crd)   # never treat a failed parse as everyone leaving
+                        else:
+                            old = {row_key(r): r for r in prior["rows"]}
+                            new = {row_key(r): r for r in rows}
+                            leavers = [r for k, r in old.items() if k not in new and qualifies(r)]
+                            joiners = [r for k, r in new.items() if k not in old]
+                            if leavers:
+                                events.append({"firm": firms[crd], "crd": crd, "filing_date": filing,
+                                               "leavers": leavers, "joiners": joiners})
+                            prior.update({"firm": firms[crd], "filing_date": filing,
+                                          "etag": etag, "rows": rows})
+            except RateLimited:
+                raise
+            except Exception as exc:
+                errors += 1
+                log.warning("CRD %s: check failed (%s); retrying next run", crd, repr(exc)[:150])
+                continue
             prior["checked"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-            if not filing or filing == prior.get("filing_date"):
-                continue
-
-            # New filing. Only read the PDF once IAPD has regenerated it.
-            etag = get_pdf_etag(crd)
-            if not etag or etag == prior.get("etag"):
-                log.info("CRD %s: new filing %s, report not regenerated yet", crd, filing)
-                continue
-
-            rows, etag = fetch_schedule_a(crd)
-            time.sleep(PDF_DELAY)
-            if not rows:
-                parse_failures.append(crd)   # never treat a failed parse as everyone leaving
-                continue
-
-            old = {row_key(r): r for r in prior["rows"]}
-            new = {row_key(r): r for r in rows}
-            leavers = [r for k, r in old.items() if k not in new and qualifies(r)]
-            joiners = [r for k, r in new.items() if k not in old]
-            if leavers:
-                events.append({"firm": firms[crd], "crd": crd, "filing_date": filing,
-                               "leavers": leavers, "joiners": joiners})
-            prior.update({"firm": firms[crd], "filing_date": filing, "etag": etag, "rows": rows})
+            checkpoint()
 
         for crd in unknown:
-            if baselined >= BASELINE_PER_RUN or time.time() - t0 > MAX_RUN_SECONDS:
+            if out_of_time:
                 break
-            filing = get_adv_filing_date(crd)
-            time.sleep(DETAIL_DELAY)
-            rows, etag = fetch_schedule_a(crd)
-            time.sleep(PDF_DELAY)
+            if time.time() - t0 > MAX_RUN_SECONDS:
+                out_of_time = True
+                break
+            if baselined >= BASELINE_PER_RUN:
+                break
+            try:
+                filing = get_adv_filing_date(crd)
+                time.sleep(DETAIL_DELAY)
+                rows, etag = fetch_schedule_a(crd)
+                time.sleep(PDF_DELAY)
+            except RateLimited:
+                raise
+            except Exception as exc:
+                errors += 1
+                log.warning("CRD %s: baseline failed (%s); retrying next run", crd, repr(exc)[:150])
+                continue
+            now = datetime.now(timezone.utc).isoformat(timespec="seconds")
             if rows:
-                snap[crd] = {"firm": firms[crd], "filing_date": filing, "etag": etag, "rows": rows,
-                             "checked": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+                snap[crd] = {"firm": firms[crd], "filing_date": filing, "etag": etag,
+                             "rows": rows, "checked": now}
                 baselined += 1
             else:
+                # Remember the failure so the same unparseable firm isn't retried every chunk
+                snap.setdefault("_failed", {})[crd] = now
                 parse_failures.append(crd)
+            checkpoint()
     except RateLimited:
         log.warning("IAPD rate limit hit; saving progress, remaining firms roll to next run.")
+        out_of_time = False   # don't hammer IAPD with another chunk today
     finally:
         save(SNAPSHOT_FILE, snap)
 
-    log.info("Baseline progress: %d of %d firms", len(snap), len(firms))
-    log.info("Checked %d | baselined %d | departures at %d firms | parse failures %d | %.0fs",
-             checked, baselined, len(events), len(parse_failures), time.time() - t0)
+    done = sum(1 for c in firms if c in snap)
+    log.info("Baseline progress: %d of %d firms", done, len(firms))
+    log.info("Checked %d | baselined %d | departures at %d firms | parse failures %d | errors %d | %.0fs",
+             checked, baselined, len(events), len(parse_failures), errors, time.time() - t0)
     if parse_failures:
         log.warning("Parse failures (CRDs): %s", ", ".join(parse_failures[:50]))
     if events:
         subject, body = build_email(events)
         send_email(subject, body)
+    return EXIT_MORE_WORK if out_of_time else 0
 
 
 def test_crds(crds: list[str]) -> None:
@@ -643,4 +737,4 @@ if __name__ == "__main__":
         for crd in ["157813", "161413", "333746", "335438", "138769"]:
             print(crd, "IN" if crd in u else "MISSING", u.get(crd, ""))
     else:
-        run()
+        sys.exit(run())
