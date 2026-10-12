@@ -230234,6 +230234,890 @@
    }
   ]
  },
+ "320927": {
+  "checked": "2026-10-12T22:29:00+00:00",
+  "etag": "\"69f121e2f4064c8046ae953ef97c6521\"",
+  "filing_date": "03/20/2026",
+  "firm": "FULCRUM CAPITAL PARTNERS INC.",
+  "rows": [
+   {
+    "acquired": "04/2011",
+    "code": "E",
+    "control": "Y",
+    "crd": "",
+    "name": "FULCRUM HOLDCO CORP.",
+    "title": "SHAREHOLDER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "FE"
+   },
+   {
+    "acquired": "03/2021",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531570",
+    "name": "Collings, Gregory, C.",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2020",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531577",
+    "name": "Eldridge, Paul, S.",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2011",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531584",
+    "name": "Philp, John, K.",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "07/2013",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531570",
+    "name": "Collings, Gregory, C.",
+    "title": "PARTNER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   },
+   {
+    "acquired": "10/2011",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531577",
+    "name": "Eldridge, Paul, S.",
+    "title": "PARTNER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2020",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531604",
+    "name": "Flater, Graham, D.V.",
+    "title": "PARTNER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2020",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531608",
+    "name": "Lemmer, Johan",
+    "title": "PARTNER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   },
+   {
+    "acquired": "10/2011",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531608",
+    "name": "Lemmer, Johan",
+    "title": "CHIEF FINANCIAL OFFICER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2020",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531584",
+    "name": "Philp, John, K.",
+    "title": "PARTNER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   },
+   {
+    "acquired": "11/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7531608",
+    "name": "Lemmer, Johan",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "11/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7708688",
+    "name": "Paton, Tamara",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2024",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7884551",
+    "name": "Morrison, James",
+    "title": "PARTNER OF FULCRUM CAPITAL PARTNERS INC.",
+    "type": "I"
+   }
+  ]
+ },
+ "320929": {
+  "checked": "2026-10-12T22:29:08+00:00",
+  "etag": "\"ba3803782727633ccc5cb1a6cb8d1801\"",
+  "filing_date": "03/28/2025",
+  "firm": "SHIMA CAPITAL MANAGEMENT LLC",
+  "rows": [
+   {
+    "acquired": "12/2021",
+    "code": "NA",
+    "control": "Y",
+    "crd": "6216065",
+    "name": "GAO, YIDA, NMN",
+    "title": "MANAGING DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2023",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7719049",
+    "name": "Stahl, Brandon, Hiroki",
+    "title": "CHIEF COMPLIANCE OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2024",
+    "code": "E",
+    "control": "Y",
+    "crd": "",
+    "name": "SHIMA CAPITAL ADVISORS HOLDINGS LLC",
+    "title": "OWNER",
+    "type": "DE"
+   }
+  ]
+ },
+ "320932": {
+  "checked": "2026-10-12T22:29:13+00:00",
+  "etag": "\"ecea1c9cebdfffff96226c7ccdfd7f72\"",
+  "filing_date": "03/13/2026",
+  "firm": "BTNV MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "02/2021",
+    "code": "C",
+    "control": "Y",
+    "crd": "6047903",
+    "name": "SEBASTIAN, SEAN, DS",
+    "title": "MANAGING MEMBER",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2025",
+    "code": "C",
+    "control": "Y",
+    "crd": "7530998",
+    "name": "Cook, Kelauni, Jasmyn",
+    "title": "CO-FOUNDING PARTNER",
+    "type": "I"
+   },
+   {
+    "acquired": "02/2021",
+    "code": "C",
+    "control": "Y",
+    "crd": "7530999",
+    "name": "Motley, David, Lynn",
+    "title": "MANAGING MEMBER",
+    "type": "I"
+   },
+   {
+    "acquired": "02/2021",
+    "code": "NA",
+    "control": "Y",
+    "crd": "6909516",
+    "name": "Ferguson, Maria, Jo",
+    "title": "CHIEF FINANCIAL OFFICER",
+    "type": "I"
+   }
+  ]
+ },
+ "320986": {
+  "checked": "2026-10-12T22:29:28+00:00",
+  "etag": "\"b72c95f13bc850e0a09fca174f3c0f24\"",
+  "filing_date": "03/30/2026",
+  "firm": "ACREW DIVERSIFY CAPITAL MANAGEMENT, L.P.",
+  "rows": [
+   {
+    "acquired": "04/2021",
+    "code": "NA",
+    "control": "Y",
+    "crd": "307729",
+    "name": "ACREW CAPITAL MANAGEMENT, L.P.",
+    "title": "GENERAL PARTNER ACREW CAPITAL MANAGEMENT CORP. DE LIMITED 04/2021 NA Y N xxx-xx-xxxx PARTNER",
+    "type": "DE"
+   },
+   {
+    "acquired": "04/2021",
+    "code": "NA",
+    "control": "Y",
+    "crd": "6473127",
+    "name": "GOUW, THERESIA",
+    "title": "EXECUTIVE OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2021",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7517043",
+    "name": "Kolodny, Lauren",
+    "title": "EXECUTIVE OFFICER",
+    "type": "I"
+   }
+  ]
+ },
+ "321046": {
+  "checked": "2026-10-12T22:29:34+00:00",
+  "etag": "\"972f970abbbcdd3fd4c14e659f2354d8\"",
+  "filing_date": "09/08/2026",
+  "firm": "DOMA PERPETUAL CAPITAL MANAGEMENT LLC",
+  "rows": [
+   {
+    "acquired": "03/2022",
+    "code": "E",
+    "control": "Y",
+    "crd": "4424406",
+    "name": "ESCUDERO, PEDRO",
+    "title": "CHIEF EXECUTIVE OFFICER, CHIEF INVESTMENT OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "08/2026",
+    "code": "A",
+    "control": "Y",
+    "crd": "2762391",
+    "name": "ENVERGA, IAN, MARK",
+    "title": "CHIEF COMPLIANCE OFFICER, CHIEF OPERATING OFFICER, HEAD OF MARKETING",
+    "type": "I"
+   }
+  ]
+ },
+ "321047": {
+  "checked": "2026-10-12T22:29:38+00:00",
+  "etag": "\"db12b7b7499d80950a62dc680a1e7aef\"",
+  "filing_date": "11/03/2025",
+  "firm": "WORKLIFE VENTURES MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "02/2021",
+    "code": "E",
+    "control": "Y",
+    "crd": "7157614",
+    "name": "KIMMEL, BRIANNE",
+    "title": "MANAGER",
+    "type": "I"
+   }
+  ]
+ },
+ "321050": {
+  "checked": "2026-10-12T22:29:47+00:00",
+  "etag": "\"c4acff225c1e63650cb6f4c0a84665f6\"",
+  "filing_date": "03/27/2026",
+  "firm": "CHICAGO VENTURES FUND MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "11/2013",
+    "code": "C",
+    "control": "Y",
+    "crd": "",
+    "name": "TWIN ENTERPRISES, LLC",
+    "title": "MEMBER",
+    "type": "DE"
+   },
+   {
+    "acquired": "11/2013",
+    "code": "C",
+    "control": "Y",
+    "crd": "",
+    "name": "185 VENTURES, LLC",
+    "title": "MEMBER",
+    "type": "DE"
+   },
+   {
+    "acquired": "01/2019",
+    "code": "C",
+    "control": "Y",
+    "crd": "",
+    "name": "MUDBUG HOLDINGS, LLC",
+    "title": "MEMBER",
+    "type": "DE"
+   },
+   {
+    "acquired": "11/2013",
+    "code": "NA",
+    "control": "Y",
+    "crd": "6319704",
+    "name": "LARKINS, STUART",
+    "title": "MANAGER",
+    "type": "I"
+   },
+   {
+    "acquired": "01/2019",
+    "code": "NA",
+    "control": "Y",
+    "crd": "3113565",
+    "name": "CHESNEY, ROBERT, GEORGE",
+    "title": "MANAGER",
+    "type": "I"
+   }
+  ]
+ },
+ "321075": {
+  "checked": "2026-10-12T22:29:59+00:00",
+  "etag": "\"7e74aa82a240bb174cbb19ed4fd4801c\"",
+  "filing_date": "04/01/2026",
+  "firm": "GOAT RODEO CAPITAL ADVISORS, LLC",
+  "rows": [
+   {
+    "acquired": "03/2021",
+    "code": "D",
+    "control": "Y",
+    "crd": "7238117",
+    "name": "Fowler, Carlton",
+    "title": "MEMBER",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2021",
+    "code": "D",
+    "control": "Y",
+    "crd": "7238118",
+    "name": "Pelligrini, James",
+    "title": "MEMBER",
+    "type": "I"
+   }
+  ]
+ },
+ "321090": {
+  "checked": "2026-10-12T22:30:06+00:00",
+  "etag": "\"3beac7fb9c089a54b45d498749403e5f\"",
+  "filing_date": "03/30/2026",
+  "firm": "FERNBROOK CAPITAL MANAGEMENT LLC",
+  "rows": [
+   {
+    "acquired": "04/2018",
+    "code": "D",
+    "control": "Y",
+    "crd": "4622475",
+    "name": "DETWILER, WILLIAM, FRANKLIN",
+    "title": "MEMBER AND MANAGER MCKEE, MARIA GAYNOR I MEMBER 04/2018 C Y N xxx-xx-xxxx AND MANAGER",
+    "type": "I"
+   }
+  ]
+ },
+ "321106": {
+  "checked": "2026-10-12T22:30:13+00:00",
+  "etag": "\"79e14500043cfcb685d76d1f8fa02041\"",
+  "filing_date": "03/11/2026",
+  "firm": "SACHS CAPITAL PARTNERS, LLC",
+  "rows": [
+   {
+    "acquired": "11/2014",
+    "code": "E",
+    "control": "Y",
+    "crd": "166809",
+    "name": "SACHS CAPITAL, LLC",
+    "title": "MANAGING MEMBER",
+    "type": "DE"
+   },
+   {
+    "acquired": "11/2014",
+    "code": "B",
+    "control": "N",
+    "crd": "4416017",
+    "name": "BASSIN, STUART, HOWARD",
+    "title": "MEMBER",
+    "type": "I"
+   }
+  ]
+ },
+ "321113": {
+  "checked": "2026-10-12T22:30:21+00:00",
+  "etag": "\"8ac3edfbbdc05bd60e0bcd9216c4af9e\"",
+  "filing_date": "03/26/2026",
+  "firm": "PRIME CAPITAL AG",
+  "rows": [
+   {
+    "acquired": "11/2020",
+    "code": "D",
+    "control": "Y",
+    "crd": "",
+    "name": "PRIME PARTNERS GMBH",
+    "title": "SHAREHOLDER",
+    "type": "FE"
+   },
+   {
+    "acquired": "07/2013",
+    "code": "C",
+    "control": "Y",
+    "crd": "",
+    "name": "WGS PRIVATE EQUITY BETEILIGUNGS GMBH",
+    "title": "SHAREHOLDER",
+    "type": "FE"
+   },
+   {
+    "acquired": "10/2015",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7559641",
+    "name": "Kalusche, Andreas, Martin",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "10/2019",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7559646",
+    "name": "Gerlach, Marco",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "05/2009",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7559650",
+    "name": "Goricki, Werner",
+    "title": "DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "11/2023",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7893441",
+    "name": "Huebsch, Kerstin, Michaela",
+    "title": "DIRECTOR",
+    "type": "I"
+   }
+  ]
+ },
+ "321147": {
+  "checked": "2026-10-12T22:30:28+00:00",
+  "etag": "\"19c3b2ade04a1ad64bf67f3f2884a8ee\"",
+  "filing_date": "03/26/2026",
+  "firm": "AILSA CAPITAL LLC",
+  "rows": [
+   {
+    "acquired": "12/2019",
+    "code": "C",
+    "control": "Y",
+    "crd": "3104236",
+    "name": "GARCIA, ALBERTO",
+    "title": "ULTIMATE BENEFICIAL OWNER AND MANAGING PARTNER",
+    "type": "I"
+   },
+   {
+    "acquired": "12/2019",
+    "code": "D",
+    "control": "Y",
+    "crd": "4720813",
+    "name": "SISO, ARTURO,",
+    "title": "I ULTIMATE BENEFICIAL OWNER AND MANAGING PARTNER",
+    "type": "I"
+   },
+   {
+    "acquired": "12/2019",
+    "code": "D",
+    "control": "Y",
+    "crd": "",
+    "name": "MPIV PARTNERS LLC",
+    "title": "DIRECT OWNER",
+    "type": "DE"
+   },
+   {
+    "acquired": "12/2019",
+    "code": "D",
+    "control": "Y",
+    "crd": "",
+    "name": "ADMINISTRA AV LLC",
+    "title": "DIRECT OWNER",
+    "type": "DE"
+   }
+  ]
+ },
+ "321155": {
+  "checked": "2026-10-12T22:30:34+00:00",
+  "etag": "\"aaf00b4073eb18ffae1beff2e5c56814\"",
+  "filing_date": "03/30/2026",
+  "firm": "SJW INVESTMENTS, LLC",
+  "rows": [
+   {
+    "acquired": "08/2020",
+    "code": "E",
+    "control": "Y",
+    "crd": "7597115",
+    "name": "Williams, Serena, Jameka",
+    "title": "FOUNDING PARTNER AND SOLE MEMBER",
+    "type": "I"
+   },
+   {
+    "acquired": "11/2024",
+    "code": "NA",
+    "control": "N",
+    "crd": "2905805",
+    "name": "FERREIRA, ELIZABETH, MARIE",
+    "title": "OPERATING PARTNER",
+    "type": "I"
+   }
+  ]
+ },
+ "321156": {
+  "checked": "2026-10-12T22:30:38+00:00",
+  "etag": "\"92413d273843425f7659a78220e4321a\"",
+  "filing_date": "03/27/2026",
+  "firm": "DARK HORSE CAPITAL MANAGEMENT LLC",
+  "rows": [
+   {
+    "acquired": "11/2018",
+    "code": "E",
+    "control": "Y",
+    "crd": "5363203",
+    "name": "MARTIN, CASEY, JAY",
+    "title": "MANAGING PARTNER AND CHIEF COMPLIANCE OFFICER",
+    "type": "I"
+   }
+  ]
+ },
+ "321161": {
+  "checked": "2026-10-12T22:30:45+00:00",
+  "etag": "\"d03af07139dca7f3205fc8be5b8ea949\"",
+  "filing_date": "03/31/2026",
+  "firm": "HAWKTAIL MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "03/2021",
+    "code": "C",
+    "control": "Y",
+    "crd": "5092558",
+    "name": "POLLAK, ROBERT, WILLIAM",
+    "title": "MANAGING MEMBER",
+    "type": "I"
+   },
+   {
+    "acquired": "03/2021",
+    "code": "C",
+    "control": "Y",
+    "crd": "6137523",
+    "name": "POLANSKY, MICHAEL, WOODS",
+    "title": "MANAGING MEMBER",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2024",
+    "code": "C",
+    "control": "Y",
+    "crd": "6137524",
+    "name": "DENNIS, ALDA, LEU",
+    "title": "MANAGING MEMBER",
+    "type": "I"
+   }
+  ]
+ },
+ "321168": {
+  "checked": "2026-10-12T22:30:51+00:00",
+  "etag": "\"76612d3583cb8dbe3be410bebb47c6ff\"",
+  "filing_date": "06/09/2026",
+  "firm": "BLUE LION GLOBAL MANAGEMENT, L.P.",
+  "rows": [
+   {
+    "acquired": "01/2022",
+    "code": "E",
+    "control": "Y",
+    "crd": "",
+    "name": "BLUE LION GLOBAL GP, LLC",
+    "title": "SOLE GENERAL PARTNER",
+    "type": "DE"
+   }
+  ]
+ },
+ "321181": {
+  "checked": "2026-10-12T22:30:58+00:00",
+  "etag": "\"e5f779c06063a4b9e2a5f8a713c954c8\"",
+  "filing_date": "03/24/2026",
+  "firm": "DAYBREAK VENTURES MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "05/2023",
+    "code": "E",
+    "control": "Y",
+    "crd": "6206923",
+    "name": "WOODBURY, REXFORD, ROWEN",
+    "title": "MANAGING DIRECTOR",
+    "type": "I"
+   }
+  ]
+ },
+ "321188": {
+  "checked": "2026-10-12T22:31:04+00:00",
+  "etag": "\"8c3ec277c2a9cffc0118e9a5ac4da861\"",
+  "filing_date": "03/28/2024",
+  "firm": "LOTUS DOMAINE MANAGEMENT LLC",
+  "rows": [
+   {
+    "acquired": "01/2020",
+    "code": "D",
+    "control": "Y",
+    "crd": "",
+    "name": "TALL PALM SPV LLC",
+    "title": "MEMBER",
+    "type": "DE"
+   },
+   {
+    "acquired": "01/2020",
+    "code": "C",
+    "control": "Y",
+    "crd": "",
+    "name": "STELLAFI 73 LLC",
+    "title": "MEMBER",
+    "type": "DE"
+   }
+  ]
+ },
+ "321224": {
+  "checked": "2026-10-12T22:31:13+00:00",
+  "etag": "\"dbc39595a14384f7c04a4ad513f5ddec\"",
+  "filing_date": "03/19/2026",
+  "firm": "BREAKOUT CAPITAL PARTNERS",
+  "rows": [
+   {
+    "acquired": "03/2022",
+    "code": "E",
+    "control": "Y",
+    "crd": "5033857",
+    "name": "Sharma, Ruchir",
+    "title": "CHIEF INVESTMENT OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "3120025",
+    "name": "Cohen, Sherri, Lynn",
+    "title": "CHIEF COMPLIANCE OFFICER/CHIEF OPERATING OFFICER/CHIEF FINANCIAL OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "06/2022",
+    "code": "B",
+    "control": "N",
+    "crd": "7554331",
+    "name": "Kelkar, Swanand",
+    "title": "MANAGING PARTNER",
+    "type": "I"
+   }
+  ]
+ },
+ "321232": {
+  "checked": "2026-10-12T22:31:26+00:00",
+  "etag": "\"2f9f6716d95bd834a0a30d9ca3a4be7e\"",
+  "filing_date": "09/08/2026",
+  "firm": "GOLDEN PINE ASSET MANAGEMENT LIMITED",
+  "rows": [
+   {
+    "acquired": "03/2017",
+    "code": "E",
+    "control": "Y",
+    "crd": "",
+    "name": "GOLDEN PINE INTERNATIONAL ASSET",
+    "title": "SHAREHOLDER MANAGEMENT LIMITED",
+    "type": "FE"
+   },
+   {
+    "acquired": "04/2017",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7542886",
+    "name": "SHE, Peng",
+    "title": "CHIEF INVESTMENT OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "04/2017",
+    "code": "NA",
+    "control": "N",
+    "crd": "7542887",
+    "name": "WANG, Jiongyu",
+    "title": "NON- EXECUTIVE DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "06/2026",
+    "code": "NA",
+    "control": "Y",
+    "crd": "8340807",
+    "name": "CHEN, DANIEL",
+    "title": "HEAD OF COMPLIANCE",
+    "type": "I"
+   }
+  ]
+ },
+ "321246": {
+  "checked": "2026-10-12T22:31:33+00:00",
+  "etag": "\"22648c5f05934dd4f5f72db5198e288b\"",
+  "filing_date": "02/19/2026",
+  "firm": "NXP MANAGEMENT LLC",
+  "rows": [
+   {
+    "acquired": "01/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7549081",
+    "name": "MCRAE, CAMDEN, ALEXANDER",
+    "title": "MANAGER",
+    "type": "I"
+   },
+   {
+    "acquired": "01/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7549082",
+    "name": "GAMMILL, JOSEPH, CHRISTIAN",
+    "title": "MANAGER",
+    "type": "I"
+   },
+   {
+    "acquired": "01/2022",
+    "code": "E",
+    "control": "Y",
+    "crd": "",
+    "name": "NXP L.P.",
+    "title": "MEMBER",
+    "type": "DE"
+   }
+  ]
+ },
+ "321265": {
+  "checked": "2026-10-12T22:31:37+00:00",
+  "etag": "\"bb5f4640f4b8ece9ae69faacc99db9df\"",
+  "filing_date": "03/27/2026",
+  "firm": "EB CAPITAL, LLC",
+  "rows": [
+   {
+    "acquired": "05/2013",
+    "code": "E",
+    "control": "Y",
+    "crd": "5352908",
+    "name": "BURKLAND, WILLIAM, E",
+    "title": "MEMBER AND MANAGER",
+    "type": "I"
+   }
+  ]
+ },
+ "321268": {
+  "checked": "2026-10-12T22:31:49+00:00",
+  "etag": "\"22a2d065cb87950fc975abed804ab340\"",
+  "filing_date": "03/25/2026",
+  "firm": "FDVC MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "03/2022",
+    "code": "E",
+    "control": "Y",
+    "crd": "7611951",
+    "name": "Scianna, Mark",
+    "title": "MANAGER",
+    "type": "I"
+   }
+  ]
+ },
+ "321623": {
+  "checked": "2026-10-12T22:31:56+00:00",
+  "etag": "\"a3daae89c7e80f4e4fed3d9db43c3bfb\"",
+  "filing_date": "03/31/2026",
+  "firm": "PALLADIUM HERITAGE MANAGEMENT, LLC",
+  "rows": [
+   {
+    "acquired": "02/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "7219796",
+    "name": "WONG, SUZANNE, (NMN)",
+    "title": "CHIEF FINANCIAL OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "02/2022",
+    "code": "NA",
+    "control": "Y",
+    "crd": "3087505",
+    "name": "LEHMAN, KATHERINE, ANNE",
+    "title": "CHIEF EXECUTIVE OFFICER",
+    "type": "I"
+   },
+   {
+    "acquired": "08/2022",
+    "code": "E",
+    "control": "Y",
+    "crd": "",
+    "name": "PALLADIUM HERITAGE, LLC",
+    "title": "SOLE MEMBER",
+    "type": "DE"
+   },
+   {
+    "acquired": "09/2024",
+    "code": "NA",
+    "control": "Y",
+    "crd": "3229510",
+    "name": "MITCHELL, NANCY, ANN",
+    "title": "CHIEF COMPLIANCE OFFICER",
+    "type": "I"
+   }
+  ]
+ },
+ "321630": {
+  "checked": "2026-10-12T22:32:04+00:00",
+  "etag": "\"e65350c77b6468fbede40790d6445933\"",
+  "filing_date": "02/24/2026",
+  "firm": "WINTHROP SQUARE CAPITAL, L.P.",
+  "rows": [
+   {
+    "acquired": "07/2019",
+    "code": "C",
+    "control": "Y",
+    "crd": "4360753",
+    "name": "BEGNAL, DORR, BUCKLEY",
+    "title": "CHIEF COMPLIANCE OFFICER, LIMITED PARTNER, AND MANAGING DIRECTOR",
+    "type": "I"
+   },
+   {
+    "acquired": "07/2019",
+    "code": "C",
+    "control": "Y",
+    "crd": "6022079",
+    "name": "LIMBERIS, ANTHONY, JOHN",
+    "title": "MANAGING DIRECTOR AND LIMITED PARTNER",
+    "type": "I"
+   },
+   {
+    "acquired": "07/2019",
+    "code": "C",
+    "control": "Y",
+    "crd": "2438120",
+    "name": "LYNCH, LINDA, HELEN",
+    "title": "MANAGING DIRECTOR AND LIMITED PARTNER",
+    "type": "I"
+   },
+   {
+    "acquired": "07/2019",
+    "code": "NA",
+    "control": "Y",
+    "crd": "",
+    "name": "WINTHROP SQUARE CAPITAL, L.L.C.",
+    "title": "GENERAL PARTNER",
+    "type": "DE"
+   }
+  ]
+ },
  "41353": {
   "checked": "2026-10-12T20:03:44+00:00",
   "etag": "\"ab64c77235190c79e07f2e847cd8a5c2\"",
@@ -230908,52 +231792,53 @@
   "283058": "2026-10-12T22:06:04+00:00",
   "283283": "2026-10-12T22:06:37+00:00",
   "283573": "2026-10-12T22:06:58+00:00",
-  "283630": "2026-10-11T18:53:34+00:00",
-  "284138": "2026-10-11T18:53:53+00:00",
-  "284927": "2026-10-11T18:54:30+00:00",
-  "285211": "2026-10-11T18:55:07+00:00",
-  "285341": "2026-10-11T18:55:44+00:00",
-  "285982": "2026-10-11T18:56:23+00:00",
-  "286114": "2026-10-11T18:56:37+00:00",
-  "287484": "2026-10-11T18:57:14+00:00",
-  "287674": "2026-10-11T18:57:50+00:00",
-  "287716": "2026-10-11T18:58:26+00:00",
-  "288041": "2026-10-11T18:59:21+00:00",
-  "288220": "2026-10-11T18:59:56+00:00",
-  "288566": "2026-10-11T19:00:31+00:00",
-  "289384": "2026-10-11T19:01:08+00:00",
-  "290063": "2026-10-11T19:01:10+00:00",
-  "290954": "2026-10-11T19:01:48+00:00",
-  "291880": "2026-10-11T19:02:24+00:00",
-  "292571": "2026-10-11T19:03:01+00:00",
-  "294197": "2026-10-11T19:03:35+00:00",
-  "297786": "2026-10-11T19:04:12+00:00",
-  "297926": "2026-10-11T19:04:49+00:00",
-  "298066": "2026-10-11T19:04:56+00:00",
-  "298996": "2026-10-11T19:05:33+00:00",
-  "299601": "2026-10-11T19:06:08+00:00",
-  "299961": "2026-10-11T19:06:47+00:00",
-  "301704": "2026-10-11T19:06:49+00:00",
-  "302017": "2026-10-11T19:07:25+00:00",
-  "304307": "2026-10-11T19:08:06+00:00",
-  "305988": "2026-10-11T19:08:42+00:00",
-  "306949": "2026-10-11T19:09:21+00:00",
-  "309234": "2026-10-11T19:10:03+00:00",
-  "309915": "2026-10-11T19:10:40+00:00",
-  "310823": "2026-10-11T19:10:49+00:00",
-  "311409": "2026-10-11T19:11:26+00:00",
-  "311623": "2026-10-11T19:12:03+00:00",
-  "312329": "2026-10-11T19:12:14+00:00",
-  "312424": "2026-10-11T19:12:51+00:00",
-  "312797": "2026-10-11T19:13:37+00:00",
-  "313763": "2026-10-11T19:13:39+00:00",
-  "314952": "2026-10-11T19:14:15+00:00",
-  "315680": "2026-10-11T19:14:53+00:00",
-  "316030": "2026-10-11T19:15:33+00:00",
-  "317100": "2026-10-11T19:16:10+00:00",
-  "318261": "2026-10-11T19:26:59+00:00",
-  "318278": "2026-10-11T19:27:19+00:00",
-  "319105": "2026-10-11T19:37:46+00:00",
-  "319594": "2026-10-11T19:44:46+00:00"
+  "283630": "2026-10-12T22:07:37+00:00",
+  "284138": "2026-10-12T22:07:55+00:00",
+  "284927": "2026-10-12T22:08:28+00:00",
+  "285211": "2026-10-12T22:09:03+00:00",
+  "285341": "2026-10-12T22:09:36+00:00",
+  "285982": "2026-10-12T22:10:11+00:00",
+  "286114": "2026-10-12T22:10:25+00:00",
+  "287484": "2026-10-12T22:10:59+00:00",
+  "287674": "2026-10-12T22:11:32+00:00",
+  "287716": "2026-10-12T22:12:04+00:00",
+  "288041": "2026-10-12T22:12:48+00:00",
+  "288220": "2026-10-12T22:13:21+00:00",
+  "288566": "2026-10-12T22:13:52+00:00",
+  "289384": "2026-10-12T22:14:24+00:00",
+  "290063": "2026-10-12T22:14:26+00:00",
+  "290954": "2026-10-12T22:15:01+00:00",
+  "291880": "2026-10-12T22:15:34+00:00",
+  "292571": "2026-10-12T22:16:07+00:00",
+  "294197": "2026-10-12T22:16:38+00:00",
+  "297786": "2026-10-12T22:17:12+00:00",
+  "297926": "2026-10-12T22:17:46+00:00",
+  "298066": "2026-10-12T22:17:52+00:00",
+  "298996": "2026-10-12T22:18:26+00:00",
+  "299601": "2026-10-12T22:18:58+00:00",
+  "299961": "2026-10-12T22:19:32+00:00",
+  "301704": "2026-10-12T22:19:34+00:00",
+  "302017": "2026-10-12T22:20:06+00:00",
+  "304307": "2026-10-12T22:20:44+00:00",
+  "305988": "2026-10-12T22:21:16+00:00",
+  "306949": "2026-10-12T22:21:51+00:00",
+  "309234": "2026-10-12T22:22:28+00:00",
+  "309915": "2026-10-12T22:23:01+00:00",
+  "310823": "2026-10-12T22:23:09+00:00",
+  "311409": "2026-10-12T22:23:43+00:00",
+  "311623": "2026-10-12T22:24:17+00:00",
+  "312329": "2026-10-12T22:24:27+00:00",
+  "312424": "2026-10-12T22:25:00+00:00",
+  "312797": "2026-10-12T22:25:43+00:00",
+  "313763": "2026-10-12T22:25:44+00:00",
+  "314952": "2026-10-12T22:26:17+00:00",
+  "315680": "2026-10-12T22:26:52+00:00",
+  "316030": "2026-10-12T22:27:29+00:00",
+  "317100": "2026-10-12T22:28:03+00:00",
+  "318261": "2026-10-12T22:28:08+00:00",
+  "318278": "2026-10-12T22:28:15+00:00",
+  "319105": "2026-10-12T22:28:49+00:00",
+  "319594": "2026-10-12T22:28:54+00:00",
+  "321231": "2026-10-12T22:31:19+00:00"
  }
 }
